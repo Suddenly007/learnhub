@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isAdmin()  { return signedIn() && request.auth.token.admin == true; }
+
+    match /courses/{courseId} {
+      // Users only see published courses; admins see everything.
+      allow read: if resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+
+      match /lessons/{lessonId} {
+        allow read: if isAdmin() ||
+          (signedIn() &&
+           get(/databases/$(database)/documents/courses/$(courseId)).data.published == true);
+        allow write: if isAdmin();
+      }
+    }
+
+    // Each user can only touch their own progress.
+    match /users/{uid}/progress/{lessonId} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+  }
+}

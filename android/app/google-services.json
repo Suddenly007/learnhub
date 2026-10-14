@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1066683617310",
+    "project_id": "learnhub-d313a",
+    "storage_bucket": "learnhub-d313a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066683617310:android:0369a5e76bdb753cbb5e0f",
+        "android_client_info": {
+          "package_name": "com.example.learnhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3-3wFy2mChK9I0CVZsd4Utt7wzbGk_JI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
